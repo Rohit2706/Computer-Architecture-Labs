@@ -1,0 +1,71 @@
+$date
+	Tue Aug 27 14:38:32 2019
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module testbench $end
+$var wire 4 ! f [3:0] $end
+$var reg 4 " a [3:0] $end
+$scope module bcd $end
+$var wire 4 # i [3:0] $end
+$var wire 4 $ o [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 $
+b0 #
+b0 "
+b0 !
+$end
+#10
+b1 !
+b1 $
+b1 "
+b1 #
+#20
+b11 !
+b11 $
+b10 "
+b10 #
+#30
+b10 !
+b10 $
+b11 "
+b11 #
+#40
+b110 !
+b110 $
+b100 "
+b100 #
+#50
+b111 !
+b111 $
+b101 "
+b101 #
+#60
+b101 !
+b101 $
+b110 "
+b110 #
+#70
+b100 !
+b100 $
+b111 "
+b111 #
+#80
+b1100 !
+b1100 $
+b1000 "
+b1000 #
+#90
+b1101 !
+b1101 $
+b1001 "
+b1001 #
+#100
