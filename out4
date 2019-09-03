@@ -1,0 +1,190 @@
+#! c:/iverilog-x86/bin/vvp
+:ivl_version "10.0 (stable)" "(v10_0)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00fa4258 .scope module, "test" "test" 2 51;
+ .timescale 0 0;
+v025f0080_0 .var "clock", 0 0;
+v025efe18_0 .net "q0", 0 0, v00fac800_0;  1 drivers
+v025efbb0_0 .net "q1", 0 0, v00faeef0_0;  1 drivers
+v025efc08_0 .net "q2", 0 0, v00fa51e8_0;  1 drivers
+v025ef9a0_0 .net "q3", 0 0, v025eff78_0;  1 drivers
+S_00fa4328 .scope module, "sq" "synchronous_counter" 2 54, 2 39 0, S_00fa4258;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clock"
+    .port_info 1 /OUTPUT 1 "q0"
+    .port_info 2 /OUTPUT 1 "q1"
+    .port_info 3 /OUTPUT 1 "q2"
+    .port_info 4 /OUTPUT 1 "q3"
+L_00faefa0 .functor AND 1, v00fac800_0, v00faeef0_0, C4<1>, C4<1>;
+L_00fa3408 .functor AND 1, v00fa51e8_0, L_00faefa0, C4<1>, C4<1>;
+v025efc60_0 .net "a", 0 0, L_00faefa0;  1 drivers
+v025efaa8_0 .net "b", 0 0, L_00fa3408;  1 drivers
+v025eff20_0 .net "clock", 0 0, v025f0080_0;  1 drivers
+v025f00d8_0 .net "q0", 0 0, v00fac800_0;  alias, 1 drivers
+v025efb58_0 .net "q1", 0 0, v00faeef0_0;  alias, 1 drivers
+v025efdc0_0 .net "q2", 0 0, v00fa51e8_0;  alias, 1 drivers
+v025f0028_0 .net "q3", 0 0, v025eff78_0;  alias, 1 drivers
+S_00fa3268 .scope module, "jk1" "JKFlipFlop" 2 43, 2 1 0, S_00fa4328;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "j"
+    .port_info 1 /INPUT 1 "k"
+    .port_info 2 /INPUT 1 "clock"
+    .port_info 3 /OUTPUT 1 "q"
+v00fab5a8_0 .net "clock", 0 0, v025f0080_0;  alias, 1 drivers
+L_0261cc30 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
+v00fab4b0_0 .net "j", 0 0, L_0261cc30;  1 drivers
+L_0261cc58 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
+v00faac50_0 .net "k", 0 0, L_0261cc58;  1 drivers
+v00fac800_0 .var "q", 0 0;
+E_00faa720 .event posedge, v00fab5a8_0;
+S_00fa3338 .scope module, "jk2" "JKFlipFlop" 2 44, 2 1 0, S_00fa4328;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "j"
+    .port_info 1 /INPUT 1 "k"
+    .port_info 2 /INPUT 1 "clock"
+    .port_info 3 /OUTPUT 1 "q"
+v00fab648_0 .net "clock", 0 0, v025f0080_0;  alias, 1 drivers
+v00faee40_0 .net "j", 0 0, v00fac800_0;  alias, 1 drivers
+v00faee98_0 .net "k", 0 0, v00fac800_0;  alias, 1 drivers
+v00faeef0_0 .var "q", 0 0;
+S_00fa5068 .scope module, "jk3" "JKFlipFlop" 2 46, 2 1 0, S_00fa4328;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "j"
+    .port_info 1 /INPUT 1 "k"
+    .port_info 2 /INPUT 1 "clock"
+    .port_info 3 /OUTPUT 1 "q"
+v00faef48_0 .net "clock", 0 0, v025f0080_0;  alias, 1 drivers
+v00fa5138_0 .net "j", 0 0, L_00faefa0;  alias, 1 drivers
+v00fa5190_0 .net "k", 0 0, L_00faefa0;  alias, 1 drivers
+v00fa51e8_0 .var "q", 0 0;
+S_025ef8a8 .scope module, "jk4" "JKFlipFlop" 2 48, 2 1 0, S_00fa4328;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "j"
+    .port_info 1 /INPUT 1 "k"
+    .port_info 2 /INPUT 1 "clock"
+    .port_info 3 /OUTPUT 1 "q"
+v025efec8_0 .net "clock", 0 0, v025f0080_0;  alias, 1 drivers
+v025efb00_0 .net "j", 0 0, L_00fa3408;  alias, 1 drivers
+v025efa50_0 .net "k", 0 0, L_00fa3408;  alias, 1 drivers
+v025eff78_0 .var "q", 0 0;
+    .scope S_00fa3268;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00fac800_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_00fa3268;
+T_1 ;
+    %wait E_00faa720;
+    %load/vec4 v00fab4b0_0;
+    %load/vec4 v00fac800_0;
+    %inv;
+    %and;
+    %load/vec4 v00faac50_0;
+    %inv;
+    %load/vec4 v00fac800_0;
+    %and;
+    %or;
+    %assign/vec4 v00fac800_0, 0;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_00fa3338;
+T_2 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00faeef0_0, 0, 1;
+    %end;
+    .thread T_2;
+    .scope S_00fa3338;
+T_3 ;
+    %wait E_00faa720;
+    %load/vec4 v00faee40_0;
+    %load/vec4 v00faeef0_0;
+    %inv;
+    %and;
+    %load/vec4 v00faee98_0;
+    %inv;
+    %load/vec4 v00faeef0_0;
+    %and;
+    %or;
+    %assign/vec4 v00faeef0_0, 0;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_00fa5068;
+T_4 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00fa51e8_0, 0, 1;
+    %end;
+    .thread T_4;
+    .scope S_00fa5068;
+T_5 ;
+    %wait E_00faa720;
+    %load/vec4 v00fa5138_0;
+    %load/vec4 v00fa51e8_0;
+    %inv;
+    %and;
+    %load/vec4 v00fa5190_0;
+    %inv;
+    %load/vec4 v00fa51e8_0;
+    %and;
+    %or;
+    %assign/vec4 v00fa51e8_0, 0;
+    %jmp T_5;
+    .thread T_5;
+    .scope S_025ef8a8;
+T_6 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v025eff78_0, 0, 1;
+    %end;
+    .thread T_6;
+    .scope S_025ef8a8;
+T_7 ;
+    %wait E_00faa720;
+    %load/vec4 v025efb00_0;
+    %load/vec4 v025eff78_0;
+    %inv;
+    %and;
+    %load/vec4 v025efa50_0;
+    %inv;
+    %load/vec4 v025eff78_0;
+    %and;
+    %or;
+    %assign/vec4 v025eff78_0, 0;
+    %jmp T_7;
+    .thread T_7;
+    .scope S_00fa4258;
+T_8 ;
+    %wait E_00faa720;
+    %vpi_call 2 57 "$display", "%b%b%b%b", v025ef9a0_0, v025efc08_0, v025efbb0_0, v025efe18_0 {0 0 0};
+    %jmp T_8;
+    .thread T_8;
+    .scope S_00fa4258;
+T_9 ;
+    %pushi/vec4 16, 0, 32;
+T_9.0 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_9.1, 5;
+    %jmp/1 T_9.1, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v025f0080_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v025f0080_0, 0, 1;
+    %jmp T_9.0;
+T_9.1 ;
+    %pop/vec4 1;
+    %end;
+    .thread T_9;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "synchronous_counter.v";
